@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Welcome, {{ request.session.user_name }}! </h1>
+    {{ request.session.user_id }}
+
+    <h2> Quoteable Quotes</h2>
+
+
+    {% for quote in notFavorite %}
+    <p>{{ quote.quote }}-{{ quote.quoted_by }} posted by <a href="/users/{{ quote.posted_by.id }}">{{ quote.posted_by.alias }}</a>   <a href="/addtoFav/{{ quote.id }}">add to favorite</a></p> 
+    {% endfor %}
+
+
+    <!-- to access for foriegn key select it and then add it   -->
+
+    <h2>Your Favorite Quotes</h2>
+
+    {% for fav in favorite %}
+    <p>{{ fav.quote }}{{ fav.quoted_by}} posted by {{fav.posted_by.name}} </p> <a href="/removefromFav/{{ fav.id }}">Remove Quote</a>
+    {% endfor %}
+
+    <div>
+        <h3> Contribute a Quote:</h3>
+        <form action="/addquote" method="post">
+        {% csrf_token %}
+        Quoted By:
+        <input type="text" name="quoted_by"> 
+        Message:
+        <input type="text" name="message">
+        <input type="submit" value="Submit Quote">
+        </form>
+    </div>
+</body>
+
+</html>

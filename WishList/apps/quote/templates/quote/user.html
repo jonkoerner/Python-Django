@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    user info
+    {{ User.alias }}
+
+    {% for indv_quote in Quote %}
+    <p> {{indv_quote.quote}} </p>
+    {% endfor %}
+
+<!-- request.session.clear() -->
+</body>
+</html>

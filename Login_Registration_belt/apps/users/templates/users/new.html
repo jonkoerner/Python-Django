@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    {% load static %}
+</head>
+<body>
+    <h1>Welcome</h1>
+    <Table>
+        <thead>Registration</thead>
+        <form action="/users/create" method="POST" ></ul>
+             {% csrf_token %}
+             <ul>Frist Name: <input type="text" name="first"></ul> 
+             <ul>Last Name:<input type="text" name="last"></ul>
+             <ul>Email:<input type="text" name="email"></ul>
+             <ul>Password:<input type="password" name="password"></ul>
+             <ul>Confirm Password:<input type="text" name="first"></ul> 
+             <ul>Date of Birth<input type="date" name="dob"></ul><br>
+             <ul><input type="submit" value="Register"></ul>
+        </form> 
+    </Table>
+    <Table>
+        <form action="/login" method="POST">
+            {% csrf_token %}
+            <ul>Email:<input type="text" name="email"></ul>
+            <ul>Password: <input type="password" name="password"></ul>
+            <ul><input type="submit" value="Login"></ul>
+        </form>
+        {% if messages %}
+            </div>
+                {% for error in messages %}
+                    <p id='error'>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </Table>
+</body>
+</html>
